@@ -1,19 +1,17 @@
-// Package p contains a Pub/Sub Cloud Function.
-// package p
 package function
 
 import (
 	"context"
 	"encoding/json"
-  "bytes"
+  	"bytes"
 	"fmt"
 	"log"
-  "strings"
+  	"strings"
 	"net/http"
 	"net/url"
 	"os"
 	"time"
-  "github.com/dustin/go-humanize"
+ 	"github.com/dustin/go-humanize"
 )
 
 // PubSubMessage is the payload of a Pub/Sub event.
@@ -118,7 +116,7 @@ func toTeams(notification Notification) MessageCard {
 	title := fmt.Sprintf(`Incident closed for "%s".`, policyName)
 	if notification.Incident.State == "open" {
 		title = fmt.Sprintf(`Incident opened for "%s".`, policyName)
-    // Red
+    		// Red
 		colour = "#F5222D"
 	}
 
@@ -127,8 +125,8 @@ func toTeams(notification Notification) MessageCard {
 		summary = notification.Incident.Summary
 	}
 
-  summary = strings.ReplaceAll(summary, "{", "<b>")
-  summary = strings.ReplaceAll(summary, "}", "</b>")
+  	summary = strings.ReplaceAll(summary, "{", "<b>")
+  	summary = strings.ReplaceAll(summary, "}", "</b>")
 
 	return MessageCard{
 		Type:       "MessageCard",
@@ -161,7 +159,7 @@ func toTeams(notification Notification) MessageCard {
 func PubSubReceiver(ctx context.Context, m PubSubMessage) error {
 	//log.Println(string(m.Data))
 
-  log.Println("Received message: ", string(m.Data))
+  	log.Println("Received message: ", string(m.Data))
 
 	teamsWebhookURL := os.Getenv("TEAMS_WEBHOOK_URL")
 	if teamsWebhookURL == "" {
@@ -175,7 +173,7 @@ func PubSubReceiver(ctx context.Context, m PubSubMessage) error {
 	}
 
 	var notification Notification
-  json.Unmarshal([]byte(message), &notification)
+  	json.Unmarshal([]byte(message), &notification)
 
 	teamsWebhook := toTeams(notification)
 
@@ -195,8 +193,8 @@ func PubSubReceiver(ctx context.Context, m PubSubMessage) error {
 		log.Println("payload", string(payload))
 		log.Fatalln("unexpected status code", res.StatusCode)
 	} else {
-    log.Println("Responce status code: ", res.StatusCode)
-  }
+    		log.Println("Responce status code: ", res.StatusCode)
+ 	}
 
 	return nil
 }
