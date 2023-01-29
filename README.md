@@ -28,6 +28,6 @@ _Forked from https://github.com/Courtsite/gcp-monitoring-to-teams
 6. Grant `role/pubsub.publisher` to `service-numbers@gcp-sa-monitoring-notification.iam.gserviceaccount.com`
 
 <img src="./configure-channel.png" width=60% height=60%>
-<br>
+
 ### Interaction
 <img src="./diagram.png" width=60% height=60%>
