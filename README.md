@@ -18,7 +18,7 @@ _Forked from https://github.com/Courtsite/gcp-monitoring-to-teams
 - Set your current working project: `gcloud config set project <project>`
 
 
-### Deployment
+
 
 1. Clone / download a copy of this repository
 2. Copy `env.sample.yaml` to `env.yaml`, and modify the environment variables declared in the file
@@ -29,5 +29,5 @@ _Forked from https://github.com/Courtsite/gcp-monitoring-to-teams
 
 <img src="./configure-channel.png" width=60% height=60%>
 <br>
-
+### Interaction
 <img src="./diagram.png" width=60% height=60%>
